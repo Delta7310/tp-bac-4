@@ -44,10 +44,18 @@ pip3 install pytest flake8 pylint
 print('Hello, World')
 ```
 Verification des LF et CRLF encodings types et presentation du shebang , et du File PATH
-Mettre le fichier executable 
+
+## Premiers tests
+```shell
+pip3 install pytest
+pytest -v hello.py
+```
+
+## Mettre le fichier executable 
 ```shell
 chmod +x hello.py
 ```
+
 
 ## Prise en compte des arguments
 ```python
@@ -66,11 +74,26 @@ Verification
 ./hello-argparse.py
 ./hello-argparse.py  Test
 ```
+Continuer avec les code source suivants: 
+```shell
+hello-optional-arg.py
+hello-main.py
+hello-get-args.py
+hello-docstring.py
+```
 
-
-
-
-
+## Checking style et errors
+```shell
+pip3 install flake8 pylint black ipython mypy yapf
+```
+Pour garder la liste des packages python installes 
+```shell
+pip3 freeze > requirement.txt
+```
+Formatte le code 
+```shell
+  yapf -i hello.py
+```
 
 
 
