@@ -38,6 +38,40 @@ pip3 install pytest flake8 pylint
 ```
 
 ## Ecriture d'un premier programme de type hello-world
+```python
+#!/usr/bin/env python3
+# Purpose: Say hello
+print('Hello, World')
+```
+Verification des LF et CRLF encodings types et presentation du shebang , et du File PATH
+Mettre le fichier executable 
+```shell
+chmod +x hello.py
+```
+
+## Prise en compte des arguments
+```python
+#!/usr/bin/env python3
+# Purpose: Say hello
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Say hello')
+parser.add_argument('name', help='Name to greet')
+args = parser.parse_args()
+print('Hello, ' + args.name + '!')
+```
+Verification 
+```shell
+./hello-argparse.py
+./hello-argparse.py  Test
+```
+
+
+
+
+
+
 
 
 
