@@ -16,16 +16,18 @@ gcc --version  # should be 9.3.0
 ./configure --enable-optimizations --enable-shared
 # Profile guided optimization (PGO) et Link Time Optimization (LTO).
 # significant speed boost 10%-20%. 
+# Creation d'une shared library pour l'ajouter ensuite dans postgresql
 make -j`nproc`  # compile le code en parallele sur les cores
 make test # Verification 
 sudo make install # install dans la directory /usr/local/bin
 ```
-## Mise a jour des parametres du user 
+
+## Mise a jour des parametres de votre user 
 ```shell
 vi ~/.profile
-
+# ajouter dans votre ~/.profile 
+export LD_LIBRARY_PATH=/usr/local/bin:$LD_LIBRARY_PATH
 ```
-
 
 ## Verifier les parametres techniques de la version compilee
 ```
@@ -64,7 +66,6 @@ pytest -v hello.py
 chmod +x hello.py
 ```
 
-
 ## Prise en compte des arguments
 ```python
 #!/usr/bin/env python3
@@ -82,7 +83,7 @@ Verification
 ./hello-argparse.py
 ./hello-argparse.py  Test
 ```
-Continuer l'etude avec les code source suivants: 
+Continuer l'etude avec les codes source suivants: 
 ```shell
 hello-optional-arg.py
 hello-main.py
