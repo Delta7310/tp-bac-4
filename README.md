@@ -6,19 +6,27 @@ sudo apt-get update
 wget https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tgz
 tar -zxvf Python-3.9.1.tgz 
 cd Python-3.9.1
-sudo apt-get -y install build-essential
-sudo apt-get -y install libreadline-dev
-sudo apt-get -y install libsqlite3-dev
-sudo apt-get -y install libssl-dev libffi-dev libgdm-dev
-sudo apt-get -y install zlib1g-dev  lzma-dev libbz2-dev
-sudo apt-get -y install uuid-dev
-gcc --version
-./configure --enable-optimizations 
+sudo apt-get -y install build-essential  # install gcc et ses outils
+sudo apt-get -y install libreadline-dev  # permet le rappel des commandes
+sudo apt-get -y install libsqlite3-dev   # sqlite
+sudo apt-get -y install libssl-dev libffi-dev libgdm-dev # libraries systeme
+sudo apt-get -y install zlib1g-dev  lzma-dev libbz2-dev  # libraries de compression
+sudo apt-get -y install uuid-dev  # creer des uuid
+gcc --version  # should be 9.3.0
+./configure --enable-optimizations --enable-shared
 # Profile guided optimization (PGO) et Link Time Optimization (LTO).
 # significant speed boost 10%-20%. 
-make -j`nproc`
-sudo make install
+make -j`nproc`  # compile le code en parallele sur les cores
+make test # Verification 
+sudo make install # install dans la directory /usr/local/bin
 ```
+## Mise a jour des parametres du user 
+```shell
+vi ~/.profile
+
+```
+
+
 ## Verifier les parametres techniques de la version compilee
 ```
 python3 -c "import sysconfig;print('{}'.format('\n'.join(['{} = {}'.format(v, sysconfig.get_config_var(v)) for v in sorted(sysconfig.get_config_vars(), key=lambda s: s.lower())])))" > /tmp/python3.conf
@@ -43,7 +51,7 @@ pip3 install pytest flake8 pylint
 # Purpose: Say hello
 print('Hello, World')
 ```
-Verification des LF et CRLF encodings types et presentation du shebang , et du File PATH
+Verification des LF et CRLF encodings types et presentation du shebang , et du File PATH  
 
 ## Premiers tests
 ```shell
@@ -74,7 +82,7 @@ Verification
 ./hello-argparse.py
 ./hello-argparse.py  Test
 ```
-Continuer avec les code source suivants: 
+Continuer l'etude avec les code source suivants: 
 ```shell
 hello-optional-arg.py
 hello-main.py
@@ -90,7 +98,7 @@ Pour garder la liste des packages python installes
 ```shell
 pip3 freeze > requirement.txt
 ```
-Formatte le code 
+Cette commande formatte le code 
 ```shell
   yapf -i hello.py
 ```
