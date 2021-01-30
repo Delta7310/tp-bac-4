@@ -27,14 +27,17 @@ sudo make install # install dans la directory /usr/local/bin
 vi ~/.profile
 # ajouter dans votre ~/.profile 
 export LD_LIBRARY_PATH=/usr/local/bin:$LD_LIBRARY_PATH
+source ~/.profile
+python3 
+et tapez Ctrl-d pour sortir du prompt
 ```
 
 ## Verifier les parametres techniques de la version compilee
 ```
 python3 -c "import sysconfig;print('{}'.format('\n'.join(['{} = {}'.format(v, sysconfig.get_config_var(v)) for v in sorted(sysconfig.get_config_vars(), key=lambda s: s.lower())])))" > /tmp/python3.conf
 ```
-
-Voir dans le fichier genere la ligne 29 , pour verifier l'application des optimisations du compilateur
+Editez le fichier /tmp/python3.conf 
+Voir dans le fichier la ligne 29 , pour verifier l'application des optimisations du compilateur
 
 ## Mise en place du virtualenv sous Ubuntu
 ```shell
